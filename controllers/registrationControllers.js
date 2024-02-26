@@ -1,7 +1,5 @@
 let registrationControllers = (req,res)=>{
-    res.send(
-        data
-      )
+    res.send(data)
 
       let data = [
         {
