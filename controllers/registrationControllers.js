@@ -1,10 +1,8 @@
 let registrationControllers = (req,res)=>{
-    res.send(data)
-
-      let data = [
+    let data = [
         {
-          "id": 1,
-          "name": "Leanne Graham",
+            "id": 1,
+            "name": "Leanne Graham",
           "username": "Bret",
           "email": "Sincere@april.biz",
           "address": {
@@ -233,5 +231,7 @@ let registrationControllers = (req,res)=>{
           }
         }
       ]
+    res.send(data)
+    
 }
 module.exports = registrationControllers
