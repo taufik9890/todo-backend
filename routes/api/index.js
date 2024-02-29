@@ -1,8 +1,8 @@
 const express = require('express')
 const route = express.Router()
-const auth = require('./auth')
+const todo = require('./todo')
 
-route.use('/user', auth)
+route.use('/', todo)
 
 
 module.exports = route
