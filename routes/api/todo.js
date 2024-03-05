@@ -4,19 +4,25 @@ const todoModel = require('../../model/todoModel')
 // const secureApi = require('../../middleware/secureApi')
 const route = express.Router()
 
+
+
 route.post('/todo', async (req, res)=>{
     // res.send('This is todo')
     console.log(req.body)
-    const {description, name, title} = req.body
+
+
+    const {title, name, description} = req.body
     try{
+        const todo = new todoModel({
+            title,
+            name,
+            description
+        })
+
+        await todo.save()
         
-    const todo = new todoModel({
-        name,
-        description,
-        title
-    })
-     await todo.save()
-     res.send(todo)
+        // res.status(200).send(todo)
+        res.json({todo, message: 'Todo created successfully'})
 
     }
     catch(error){
@@ -24,41 +30,35 @@ route.post('/todo', async (req, res)=>{
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // const {title, name, description} = req.body
-    // try{
-    //     const todo = new todoModel({
-    //         title,
-    //         name,
-    //         description
-    //     })
-
-    //     await todo.save()
-        
-    //     // res.status(200).send(todo)
-    //     res.json({todo, message: 'Todo created successfully'})
-
-    // }
-    // catch(error){
-    //     console.log(error);
-    // }
-
-
 })
+
+
+
+// get all todos 
+
+
+route.get('/get', async (req, res) =>{
+    try{
+    //    const getTodos = await todoModel.find().select({
+    //     _id: 0
+    //    })
+    const getTodos = await todoModel.find().select("name description -_id")
+       res.send(getTodos)
+       console.log(getTodos);
+    }
+    catch(error){
+        console.log(error);
+    }
+})
+
+
+// get single todo
+
+// route.get('/get:id', async(req,res)=>{
+
+// })
+
+
 
 
 module.exports = route

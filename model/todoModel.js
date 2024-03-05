@@ -1,9 +1,10 @@
-const mongoose = require('mongoose')
+
+const mongoose = require("mongoose")
 const {Schema} = mongoose
 
 
 const todoSchema = new Schema({
-    title:{
+    title: {
         type: String,
         required: true
     },
@@ -17,10 +18,9 @@ const todoSchema = new Schema({
     }
 })
 
-const todoModel = mongoose.model('todo', todoSchema)
+const todoModel = mongoose.model('/todo', todoSchema)
+
 module.exports = todoModel
-
-
 
 // 1. protita collection er jonno ekta model thakbe. Jemon Products ekta model, User ekta model. model tai amar db te save thakbe.
 // ekhane Schema ke niye ashlam mongoose theke distructure kore. 
